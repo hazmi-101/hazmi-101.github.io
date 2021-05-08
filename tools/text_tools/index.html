@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<!--
+
+
+yang mau copas codenya untuk belajar boleh :)
+
+
+-->
+<style type="text/css" media="all">
+a{
+outline: none;
+color: #0cceff;
+text-decoration: none;
+}
+body{
+margin:0px;
+padding:0px;
+font-family:Sans-Serif;
+background-color:#343434;
+color:#ffffff;
+word-wrap:break-word;
+}
+.center{
+text-align:center;
+}
+#salin{
+display:block;
+margin-left:auto;
+margin-right:auto;
+background-color:#838383;
+color:#000000;
+border:none;
+}
+#menu{
+margin:5px;
+background-color:#838383;
+color:#ffffff;
+border:none;
+font-size:30px;
+outline:none;
+}
+#kotak{
+width:300px;
+height:300px;
+background-color:#000000;
+color: #ffffff;
+resize:none;
+outline:none;
+border:none;
+display:block;
+margin-left:auto;
+margin-right:auto;
+}
+</style>
+<div class="center"><h1>TEXT TOOLS BY <a href="https://t.me/hazmi101">@Hazmi101</a> VERSI 1.0</h1><br><h2>masukan text dibawah:</h2>
+<textarea id="kotak"></textarea>
+<h2>menu:</h2>
+<button id="menu" onclick="salin()">SALIN</button>
+</span>
+<button id="menu" onclick="hapustab()">HAPUS TAB</button>
+<button id="menu" onclick="h()">HAPUS SEPASI BERLEBIH</button>
+<button id="menu" onclick="u()">HAPUS KARAKTER NON-ASCI</button>
+</div>
+<script>
+function u(){
+document.getElementById("kotak").value = document.getElementById("kotak").value.replace(/[^\x00-\x7F]/g,"")
+};
+function h() {
+document.getElementById("kotak").value = document.getElementById("kotak").value.replace(/\ +/gi," ")
+};
+function hapustab() {
+document.getElementById("kotak").value = document.getElementById("kotak").value.replace(/^\u0009+|^ +|\u0009+$|^ +$/gi,"")
+};
+function salin() {
+var dom = document.getElementById("kotak");
+dom.select();
+dom.setSelectionRange(0, 99999)
+document.execCommand("copy");
+};
+</script>
+</body>
+</html>
