@@ -65,7 +65,7 @@ margin-right:auto;
 </span>
 <button id="menu" onclick="hapustab()">HAPUS TAB</button>
 <button id="menu" onclick="h()">HAPUS SEPASI BERLEBIH</button>
-<button id="menu" onclick="u()">HAPUS KARAKTER NON-ASCI</button>
+<button id="menu" onclick="u()">HAPUS KARAKTER NON-ASCII</button>
 </div>
 <script>
 function u(){
@@ -75,7 +75,7 @@ function h() {
 document.getElementById("kotak").value = document.getElementById("kotak").value.replace(/\ +/gi," ")
 };
 function hapustab() {
-document.getElementById("kotak").value = document.getElementById("kotak").value.replace(/^\u0009+|^ +|\u0009+$|^ +$/gi,"")
+document.getElementById("kotak").value = document.getElementById("kotak").value.replace(/^\u0009+|^ +|\u0009+$|^ +$/gim,"")
 };
 function salin() {
 var dom = document.getElementById("kotak");
