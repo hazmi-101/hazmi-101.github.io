@@ -75,7 +75,7 @@ function h() {
 document.getElementById("kotak").value = document.getElementById("kotak").value.replace(/\ +/gi," ")
 };
 function hapustab() {
-document.getElementById("kotak").value = document.getElementById("kotak").value.replace(/^\u0009+? +?/gim,"").replace(/\u0009+? +?$/gim,"")
+document.getElementById("kotak").value = document.getElementById("kotak").value.replace(/^(\u0009+)?( +)?/gim,"").replace(/(\u0009+)?( +)?$/gim,"")
 };
 function salin() {
 var dom = document.getElementById("kotak");
