@@ -3,26 +3,24 @@
 <head>
 <title>TEXT TOOLS</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <!-- ubah warna address bar -->
 <meta content='#343434' name='theme-color'/>
 <meta content='yes' name='apple-mobile-web-app-capable'/>
 <meta content='#343434' name='apple-mobile-web-app-status-bar-style'/>
-
 </head>
 <body>
 <!--
 
 
-yang mau copas codenya untuk belajar boleh :)
+untuk yang ingin copas codenya untuk belajar, boleh :)
 
 
 -->
 <style type="text/css" media="all">
 a{
-outline: none;
-color: #0cceff;
-text-decoration: none;
+outline:none;
+color:#0cceff;
+text-decoration:none;
 }
 body{
 margin:0px;
@@ -55,8 +53,20 @@ display:block;
 margin-left:auto;
 margin-right:auto;
 }
+.bikinregex{
+background-color:#000000;
+color: #ffffff;
+outline:none;
+border:none;
+}
+.footer{
+width: 100%;
+background-color: #ffffff;
+color: #000000;
+display: inline-block;
+}
 </style>
-<div class="center"><h1>TEXT TOOLS BY <a href="https://t.me/hazmi101">@Hazmi101</a> VERSI 1.0</h1><br><h2>masukan text dibawah:</h2>
+<div class="center"><h1>TEXT TOOLS BY <a href="https://t.me/hazmi101">@Hazmi101</a> VERSI 2.0</h1><br><h2>masukan text dibawah:</h2>
 <textarea id="kotak"></textarea>
 <h2>menu:</h2>
 <button id="menu" onclick="salin()">SALIN</button>
@@ -64,8 +74,27 @@ margin-right:auto;
 <button id="menu" onclick="hapustab()">HAPUS TAB</button>
 <button id="menu" onclick="h()">HAPUS SEPASI BERLEBIH</button>
 <button id="menu" onclick="u()">HAPUS KARAKTER NON-ASCII</button>
+<button id="menu" onclick="n()">HAPUS ENTER BERLEBIH</button>
+<h2>untuk yang mengerti <a href="https://www.w3schools.com/jsref/jsref_obj_regexp.asp">RegEx</a> bisa custom sendiri sesuai keinginan</h2>
+<h1>buat regex sendiri:<br>/<input type="text" class="bikinregex" style="font-size:30px;width:150px;" id="k1">/<input type="text" class="bikinregex" style="font-size:30px;width:50px;" id="k2" value="gi">
+<br>ganti dengan:<br>
+<input type="text" class="bikinregex" style="font-size:30px;width:150px;" id="k3"><br><button onclick="g()" id="menu">GANTI</button><br></h1>
+<div class="footer">
+<h3>tools ini dibuat oleh <a href="https://t.me/hazmi101">@Hazmi101</a> untuk tujuan pembelajaran, untuk yang sedang belajar html anda juga boleh menggunakan code dari tools ini untuk belajar</h3>
+</div>
 </div>
 <script>
+function g(){
+try{
+document.getElementById("kotak").value = document.getElementById("kotak").value.replace(new RegExp(document.getElementById("k1").value,document.getElementById("k2").value),document.getElementById("k3").value.toString())
+}
+catch(e){
+alert("PESAN ERROR:\n"+e.toString());
+}
+}
+function n(){
+document.getElementById("kotak").value = document.getElementById("kotak").value.replace(/\n+/g,"\n").replace(/^\n|\n$/g,"")
+};
 function u(){
 document.getElementById("kotak").value = document.getElementById("kotak").value.replace(/[^\x00-\x7F]/g,"")
 };
@@ -78,7 +107,7 @@ document.getElementById("kotak").value = document.getElementById("kotak").value.
 function salin() {
 var dom = document.getElementById("kotak");
 dom.select();
-dom.setSelectionRange(0, 99999)
+dom.setSelectionRange(0,dom.value.length)
 document.execCommand("copy");
 };
 </script>
