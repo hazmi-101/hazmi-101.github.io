@@ -21,13 +21,13 @@ font-size: 25px;
 </style>
 <body>
 <div class="tengah">
-<p class="w">tools cek info referal<br /><br />anda membuka tools ini lewat:<br /><br /><span id="ref">tidak ada hasil dari javascript (mungkin browser tidak suport atau javascript dinonaktifkan)</span></p>
+<p class="w">tools cek info referal<br /><br />anda membuka tools ini lewat:<br /><br /><span id="hasil">tidak ada hasil dari javascript (mungkin browser tidak suport atau javascript dinonaktifkan)</span></p>
 </div>
 <script type="text/javascript" charset="utf-8">
-if (document.referrer && document.referrer != ""){
-document.getElementById("ref").innerHTML = document.referrer
+if (document.referrer != ""){
+document.getElementById("hasil").innerHTML = document.referrer
 }
-else(document.getElementById("ref").innerHTML = "tidak ada hasil (mengkin anda membuka halaman langsung tanpa referal/direct dari web/aplikasi lain atau anda merefresh halaman ini)")
+else(document.getElementById("hasil").innerHTML = "tidak ada hasil (mengkin anda membuka halaman langsung tanpa referal/direct dari web/aplikasi lain atau anda merefresh halaman ini)")
 </script>
 </body>
 </html>
