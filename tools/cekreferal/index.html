@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="" content="">
+<title>cek info referal</title>
+</head>
+<style type="text/css" media="all">
+html{
+background-color: #ffffff;
+color: #000000;
+font-family: Sans-Serif;
+}
+.tengah{
+text-align: center;
+}
+.w{
+font-size: 25px;
+}
+</style>
+<body>
+<div class="tengah">
+<p class="w">tools cek info referal<br /><br />anda membuka tools ini lewat:<br /><br /><span id="ref">tidak ada hasil dari javascript (mungkin browser tidak suport atau javascript dinonaktifkan)</span></p>
+</div>
+<script type="text/javascript" charset="utf-8">
+if (document.referrer && document.referrer != ""){
+document.getElementById("ref").innerHTML = document.referrer
+}
+else(document.getElementById("ref").innerHTML = "tidak ada hasil (mengkin anda membuka halaman langsung tanpa referal/direct dari web/aplikasi lain atau anda merefresh halaman ini)")
+</script>
+</body>
+</html>
