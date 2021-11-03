@@ -1,31 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>cek info referal</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Check Referral Info Tools</title>
+  <style type="text/css" media="all">
+    body {
+      font-family: sans-serif;
+      color: #000000;
+    }
+  </style>
 </head>
-<style type="text/css" media="all">
-html{
-background-color: #ffffff;
-color: #000000;
-font-family: Sans-Serif;
-}
-.tengah{
-text-align: center;
-}
-.w{
-font-size: 25px;
-}
-</style>
+
 <body>
-<div class="tengah">
-<p class="w">tools cek info referal<br /><br />anda membuka tools ini lewat:<br /><br /><span id="hasil">tidak ada hasil dari javascript (mungkin browser tidak suport atau javascript dinonaktifkan)</span></p>
-</div>
-<script type="text/javascript" charset="utf-8">
-if (document.referrer != ""){
-document.getElementById("hasil").innerHTML = document.referrer.toString()
-}
-else(document.getElementById("hasil").innerHTML = "tidak ada hasil (mengkin anda membuka halaman langsung tanpa referal/direct dari web/aplikasi lain atau anda merefresh halaman ini)")
-</script>
+  <div style="text-align: center;">
+    <h1>Tools Cek Info Referal</h1><br />
+    <span id="a">error: browser anda mungkin tidak mendukung dom atau javascript dinonaktifkan</span><br /><br /><br /><span id="b"></span>
+  </div>
+  <script type="text/javascript" charset="utf-8">
+    if (document.referrer != "") {
+      document.getElementById("a").innerHTML = "referal : " + String(document.referrer)
+    }
+    else(document.getElementById("a").innerHTML = "tidak ada hasil (mungkin anda membuka halaman langsung tanpa referal/direct dari web lain)")
+    document.getElementById("b").innerHTML = "user-agent : " + String(navigator.userAgent)
+  </script>
 </body>
+
 </html>
