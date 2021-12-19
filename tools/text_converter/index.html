@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTML</title>
+  <style type="text/css" media="all">
+    body {
+      font-size: 15pt;
+    }
+
+    textarea {
+      width: 100%;
+      height: 150px;
+      padding: 5px 6px;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      background-color: #f8f8f8;
+      font-size: 16px;
+      resize: none;
+    }
+
+    textarea:focus {
+      outline: none !important;
+    }
+
+    button {
+      color: #000000;
+      background-color: #f8f8f8;
+      border: 2px solid #cccccc;
+      border-radius: 5px;
+      font-size: 19px;
+      margin: 3px 3px;
+    }
+
+    button:active {
+      color: #000000;
+      background-color: #E1E1E1;
+    }
+  </style>
+</head>
+
+<body>
+  <div style="text-align: center;">
+    <h1 style="line-height:0px;">TEXT CONVERTER</h1>
+    <p>created by <a href="https://hazmi-101.github.io" style="text-decoration: none;color:#0487E2;">Hazmi101</a></p><br /><br />
+  </div>
+  <textarea id="a" placeholder="input" rows="8" cols="40"></textarea>
+  <br /><br />
+  <div style="text-align: center;">
+    <button onclick="e()">encode ke entities semua caracter</button>
+    <br /><button onclick="ehtml()">encode ke entities untuk html (tidak semua)</button>
+    <br /><button onclick="d()">decode entities</button>
+    <br /><button onclick="u()">encode URI (default)</button>
+    <br /><button onclick="uc()">encode URI component (meng-encode caracter &#44;&#47;&#63;&#58;&#64;&#38;&#61;&#43;&#36;&#42;&#35; juga</button>
+    <br /><button onclick="du()">decode URI</button>
+    <br /><br />
+  </div>
+  <textarea id="b" placeholder="output" rows="8" cols="40"></textarea>
+  <script type="text/javascript" charset="utf-8">
+    function encode(str) {
+      var buf = [];
+      for (var i = str.length - 1; i >= 0; i--) {
+        buf.unshift(['&#', str[i].charCodeAt(), ';'].join(''));
+      }
+      return buf.join('');
+    }
+
+    function decode(str) {
+      return str.replace(/&#(\d+);/g, function(match, dec) {
+        return String.fromCharCode(dec);
+      });
+    }
+
+    function e() {
+      document.getElementById("b").value = encode(document.getElementById("a").value)
+    }
+
+    function ehtml() {
+
+      var a = document.getElementById("a").value
+      var b = a.match(/[^a-z0-9\n]+/gi)
+      var c = a.split(/[^a-z0-9\n]+/gi)
+      if (b != null) {
+        for (var i = 0; i < b.length; i++) {
+          c[i] += encode(b[i])
+        }
+        document.getElementById("b").value = c.join("").replace(/\n/g, "<br />")
+      }
+      else { document.getElementById("b").value = c.join("").replace(/\n/g, "<br />") }
+    }
+
+    function d() {
+      document.getElementById("b").value = decode(document.getElementById("a").value).replace(/<br( +)?\/?>/g, "\n")
+    }
+
+    function u() {
+      document.getElementById("b").value = encodeURI(document.getElementById("a").value)
+    }
+
+    function uc() {
+      document.getElementById("b").value = encodeURIComponent(document.getElementById("a").value)
+    }
+
+    function du() {
+      document.getElementById("b").value = decodeURI(document.getElementById("a").value)
+    }
+  </script>
+</body>
+
+</html>
