@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <title>HTML</title>
+  <style>
+    html,
+    body {
+      margin: 0px;
+      font-size: 16px;
+    }
+
+    #nulis {
+      border: none;
+      resize: none;
+      border-top: 5px solid;
+      border-bottom: 5px solid;
+      width: 100%;
+      height: 150px;
+      font-family: sans-serif;
+      font-size: 23px;
+    }
+
+    textarea:focus {
+      outline: 0px;
+    }
+
+    /* From cssbuttons.io by @bhaveshxrawat */
+    button {
+      background-color: #fff;
+      border-radius: 24px;
+      border-style: none;
+      box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
+      box-sizing: border-box;
+      color: #3c4043;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: inherit;
+      letter-spacing: .25px;
+      line-height: normal;
+      padding: 11px 24px;
+      transition: background box-shadow 280ms ease;
+      border: 2px solid #FFFFFF;
+    }
+
+    button:hover {
+      background: #F6F9FE;
+      color: #174ea6;
+    }
+
+    button:active {
+      box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+      outline: none;
+      border: 2px solid #4285f4;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Catatan Sederhana</h1>
+  <button onclick="simpan()">SAVE</button>
+  <button onclick="muat()">LOAD</button>
+  <button onclick="bersih()">CLEAR</button>
+  <div style="text-align: center;">
+    <textarea id="nulis"></textarea>
+
+    <script>
+      function simpan() {
+        document.cookie = document.getElementById("nulis").value
+      }
+
+      function muat() {
+        document.getElementById("nulis").value = document.cookie
+      }
+
+      function bersih() {
+        document.getElementById("nulis").value = ""
+      }
+    </script>
+  </div>
+</body>
+
+</html>
