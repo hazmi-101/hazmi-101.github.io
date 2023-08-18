@@ -1,115 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>HTML</title>
-  <style type="text/css" media="all">
-    body {
-      font-size: 16px;
-      font-family: sans-serif;
-    }
-
-    textarea {
-      width: 100%;
-      height: 150px;
-      padding: 5px 6px;
-      box-sizing: border-box;
-      border: 2px solid #ccc;
-      border-radius: 4px;
-      background-color: #f8f8f8;
-      font-size: 16px;
-      resize: none;
-    }
-
-    textarea:focus {
-      outline: none !important;
-    }
-
-    button {
-      color: #000000;
-      background-color: #f8f8f8;
-      border: 2px solid #cccccc;
-      border-radius: 5px;
-      font-size: 19px;
-      margin: 3px 3px;
-    }
-
-    button:active {
-      color: #000000;
-      background-color: #E1E1E1;
-    }
-  </style>
-</head>
-
-<body>
-  <div style="text-align: center;">
-    <h1>TEXT CONVERTER</h1>
-    <p>created by <a href="https://hazmi-101.github.io" style="text-decoration: none;color:#0487E2;">Hazmi101</a></p><br /><br />
-  </div>
-  <textarea id="a" placeholder="input" rows="8" cols="40"></textarea>
-  <br /><br />
-  <div style="text-align: center;">
-    <button onclick="e()">encode ke entities semua caracter</button>
-    <br /><button onclick="ehtml()">encode ke entities untuk html (tidak semua)</button>
-    <br /><button onclick="d()">decode entities</button>
-    <br /><button onclick="u()">encode URI (default)</button>
-    <br /><button onclick="uc()">encode URI component (meng-encode caracter &#44;&#47;&#63;&#58;&#64;&#38;&#61;&#43;&#36;&#42;&#35; juga</button>
-    <br /><button onclick="du()">decode URI</button>
-    <br /><br />
-  </div>
-  <textarea id="b" placeholder="output" rows="8" cols="40"></textarea>
-  <script type="text/javascript" charset="utf-8">
-    function encode(str) {
-      var buf = [];
-      for (var i = str.length - 1; i >= 0; i--) {
-        buf.unshift(['&#', str[i].charCodeAt(), ';'].join(''));
-      }
-      return buf.join('');
-    }
-
-    function decode(str) {
-      return str.replace(/&#(\d+);/g, function(match, dec) {
-        return String.fromCharCode(dec);
-      });
-    }
-
-    function e() {
-      document.getElementById("b").value = encode(document.getElementById("a").value)
-    }
-
-    function ehtml() {
-
-      var a = document.getElementById("a").value
-      var b = a.match(/[^a-z0-9\n]+/gi)
-      var c = a.split(/[^a-z0-9\n]+/gi)
-      if (b != null) {
-        for (var i = 0; i < b.length; i++) {
-          c[i] += encode(b[i])
-        }
-        document.getElementById("b").value = c.join("").replace(/\n/g, "<br />")
-      }
-      else { document.getElementById("b").value = c.join("").replace(/\n/g, "<br />") }
-    }
-
-    function d() {
-      document.getElementById("b").value = decode(document.getElementById("a").value).replace(/<br( +)?\/?>/g, "\n")
-    }
-
-    function u() {
-      document.getElementById("b").value = encodeURI(document.getElementById("a").value)
-    }
-
-    function uc() {
-      document.getElementById("b").value = encodeURIComponent(document.getElementById("a").value)
-    }
-
-    function du() {
-      document.getElementById("b").value = decodeURI(document.getElementById("a").value)
-    }
-  </script>
-</body>
-
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>HTML</title>
+      <style type="text/css" media="all">
+         body {
+         font-size: 16px;
+         font-family: sans-serif;
+         }
+         #nc {
+         user-select: none;
+         //  pointer-events: none;
+         }
+         textarea {
+         width: 100%;
+         height: 150px;
+         padding: 5px 6px;
+         box-sizing: border-box;
+         border: 2px solid #ccc;
+         border-radius: 4px;
+         background-color: #f8f8f8;
+         font-size: 16px;
+         resize: none;
+         }
+         textarea:focus {
+         outline: none !important;
+         }
+         button {
+         color: #000000;
+         background-color: #f8f8f8;
+         border: 2px solid #cccccc;
+         border-radius: 5px;
+         font-size: 19px;
+         margin: 3px 3px;
+         }
+         button:active {
+         color: #000000;
+         background-color: #e1e1e1;
+         }
+      </style>
+   </head>
+   <body>
+      <div style="text-align: center">
+         <h1>TEXT CONVERTER 2.0</h1>
+         <p>
+            created by
+            <a
+               href="https://hazmi-101.github.io"
+               style="text-decoration: none; color: #0487e2"
+               >Hazmi101</a
+               >
+         </p>
+         <br /><br />
+      </div>
+      <textarea id="a" placeholder="input" rows="8" cols="40"></textarea>
+      <br /><br />
+      <div id="nc" style="text-align: center">
+         <button onclick="copyinput()">copy input</button>
+         <button onclick="copyoutput()">copy output</button>
+         <button onclick="kosong()">kosongkan</button>
+         <button onclick="save()">save</button>
+         <button onclick="load()">load</button><br />
+         <button onclick="tukar()">tukar input dan output</button>
+         <hr />
+         <button onclick="e()">encode ke entities semua caracter</button>
+         <br /><button onclick="ehtml()">
+         encode ke entities untuk html (tidak semua)
+         </button>
+         <br /><button onclick="d()">decode entities</button>
+         <hr />
+         <button onclick="u()">encode URI (default)</button>
+         <br /><button onclick="uc()">
+         encode URI component (meng-encode caracter
+         &#44;&#47;&#63;&#58;&#64;&#38;&#61;&#43;&#36;&#42;&#35; juga
+         </button>
+         <br />
+         <button onclick="du()">decode URI</button><br />
+         <hr />
+         <button onclick="ehex()">encode hexadecimal</button><br />
+         <button onclick="dhex()">decode hexadecimal</button><br />
+         <hr />
+         <button onclick="dhexjs()">encode hexadecimal (javascript)</button><br />
+         <button onclick="ehexjs()">decode hexadecimal (javascript)</button><br />
+         <br /><br />
+      </div>
+      <textarea id="b" placeholder="output" rows="8" cols="40"></textarea>
+      <script type="text/javascript" charset="utf-8">
+         function ehex() {
+           var str = document.getElementById("a").value;
+           var hex = [...str]
+             .map((char) => char.charCodeAt(0).toString(16))
+             .join("");
+           document.getElementById("b").value = hex;
+         }
+         
+         function dhex() {
+           var hex = document.getElementById("a").value;
+           var str = "";
+           for (let i = 0; i < hex.length; i += 2) {
+             str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+           }
+           document.getElementById("b").value = str;
+         }
+         
+         function dhexjs() {
+           var str = document.getElementById("a").value;
+           var hex = [...str]
+             .map(
+               (char) => "\\u" + char.charCodeAt(0).toString(16).padStart(4, "0")
+             )
+             .join("");
+           document.getElementById("b").value = hex;
+         }
+         
+         function ehexjs() {
+           var hex = document.getElementById("a").value;
+           hex = hex.replace(/\\u([\dA-Fa-f]{4})/g, (_, p1) =>
+             String.fromCharCode(parseInt(p1, 16))
+           );
+           document.getElementById("b").value = hex;
+         }
+         
+         function kosong() {
+           document.getElementById("a").value = "";
+           document.getElementById("b").value = "";
+         }
+         
+         function copyoutput() {
+           var dom = document.getElementById("b");
+           dom.select();
+           dom.setSelectionRange(0, dom.value.length);
+           document.execCommand("copy");
+         }
+         
+         function copyinput() {
+           var dom = document.getElementById("a");
+           dom.select();
+           dom.setSelectionRange(0, dom.value.length);
+           document.execCommand("copy");
+         }
+         
+         function save() {
+           document.cookie =
+             "a5f51571-9ceb-49cf-9049-ae70adb63da1=" +
+             encodeURIComponent(document.getElementById("a").value);
+         
+           document.cookie =
+             "38bd6c44-d24d-45fb-bf03-e688d5abcec4=" +
+             encodeURIComponent(document.getElementById("b").value);
+         }
+         
+         function load() {
+           function getCookieValue(cookieName) {
+             var cookieValue = document.cookie
+               .split(";")
+               .find((cookie) => cookie.trim().startsWith(cookieName + "="))
+               .split("=")[1];
+             return decodeURIComponent(cookieValue);
+           }
+         
+           document.getElementById("a").value = getCookieValue(
+             "a5f51571-9ceb-49cf-9049-ae70adb63da1"
+           );
+           document.getElementById("b").value = getCookieValue(
+             "38bd6c44-d24d-45fb-bf03-e688d5abcec4"
+           );
+         }
+         
+         function tukar() {
+           var input = document.getElementById("a").value;
+           var output = document.getElementById("b").value;
+           document.getElementById("a").value = output;
+           document.getElementById("b").value = input;
+         }
+         
+         function encode(str) {
+           return [...str].map((char) => "&#" + char.charCodeAt() + ";").join("");
+         }
+         
+         function decode(str) {
+           return str.replace(/&#(\d+);/g, (_, dec) => String.fromCharCode(dec));
+         }
+         
+         function e() {
+           document.getElementById("b").value = encode(
+             document.getElementById("a").value
+           );
+         }
+         
+         function ehtml() {
+           var a = document.getElementById("a").value;
+           var b = a.match(/[^a-z0-9\n]+/gi);
+           var c = a.split(/[^a-z0-9\n]+/gi);
+           if (b != null) {
+             c = c.map((word, i) => {
+               if (b[i]) {
+                 return word + encode(b[i]);
+               }
+               return word;
+             });
+           }
+           document.getElementById("b").value = c
+             .join("")
+             .replace(/\n/g, "<br />");
+         }
+         
+         function d() {
+           document.getElementById("b").value = decode(
+             document.getElementById("a").value
+           ).replace(/<br( +)?\/?>/g, "\n");
+         }
+         
+         function u() {
+           document.getElementById("b").value = encodeURI(
+             document.getElementById("a").value
+           );
+         }
+         
+         function uc() {
+           document.getElementById("b").value = encodeURIComponent(
+             document.getElementById("a").value
+           );
+         }
+         
+         function du() {
+           document.getElementById("b").value = decodeURI(
+             document.getElementById("a").value
+           );
+         }
+      </script>
+   </body>
 </html>
