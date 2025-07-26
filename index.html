@@ -1,61 +1,185 @@
 <!DOCTYPE html>
 <html lang="id">
-   <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>HAZMI 101</title>
-      <!-- css -->
-      <style type="text/css" media="all">
-         @font-face {
-         /* font dari www.jetbrains.com/lp/mono */
-         font-family: 'JetBrains Mono';
-         src: url('aset/JetBrainsMono-Light.woff2') format('woff2');
-         font-weight: normal;
-         font-style: normal;
-         }
-         body {
-         /*Foto oleh Francesco Ungaro dari Pexels*/
-         background-image: url("aset/background.jpg");
-         background-repeat: repeat;
-         background-position: center;
-         background-size: 300px;
-         background-color: #000000;
-         color: #ffffff;
-         font-family: 'JetBrains Mono', Monospace, Sans-Serif, Arial;
-         }
-         .logo {
-         font-size: 40px;
-         margin-bottom: 0px;
-         }
-         .quote {
-         font-size: 14px;
-         margin-top: 0px;
-         }
-         .link {
-         font-size: 20px;
-         color: #00fa9a;
-         text-decoration: none;
-         }
-      </style>
-      <!-- ubah warna address bar -->
-      <meta content='#000000' name='theme-color' />
-      <meta content='yes' name='apple-mobile-web-app-capable' />
-      <meta content='#000000' name='apple-mobile-web-app-status-bar-style' />
-   </head>
-   <body>
-      <div style="text-align: center;">
-         <h1 class="logo"> HAZMI-101</h1>
-         <p class="quote">“above the sky there is another sky”</p>
-         <img width="16px" src="aset/telegram-logo.png" alt="" /><a href="https://github.com/hazmi-101" class="link"> hazmi101</a><br /><br />
-         <img width="16px" src="aset/github-white-logo.png" alt="" /><a href="https://github.com/hazmi-101" class="link"> hazmi-101</a><br /><br /><br />
-         <h2>My Project</h2>
-         <br /><br />
-         <a class="link" href="https://t.me/TextToolBot">Text Tool telegram bot</a><br /><br />
-         <a class="link" href="https://t.me/Hazmi101Bot">Hazmi101 telegram bot</a><br /><br />
-         <a class="link" href="https://hazmi-101.github.io/tools/text_tools/">Text tools</a><br /><br />
-         <a class="link" href="https://hazmi-101.github.io/tools/text_converter/">text converter</a><br /><br />
-         <a class="link" href="https://hazmi-101.github.io/tools/cekreferal/">cek referal</a>
-      </div>
-   </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hazmi 101 | Developer Portfolio</title>
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hazmi.eu.org/">
+<meta property="og:title" content="Hazmi101 | Developer Portfolio">
+<meta property="og:description" content="Landing page and project webapp and bot by Hazmi101.">
+<meta property="og:image" content="https://hazmi.eu.org/aset/preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://hazmi.eu.org/">
+<meta name="twitter:title" content="Hazmi 101 | Developer Portfolio">
+<meta name="twitter:description" content="Landing page and project webapp and bot by Hazmi101.">
+<meta name="twitter:image" content="https://hazmi.eu.org/aset/preview.jpg">
+<meta name="author" content="Hazmi101">
+<meta name="keywords" content="Hazmi101, Hazmi-101, Web App, Telegram Bot, Project, Portfolio, Developer, JavaScript, Tools, GitHub, Personal Website">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" sizes="32x32" href="aset/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="aset/favicon-16x16.png">
+<link rel="shortcut icon" href="aset/favicon.ico">
+<link rel="apple-touch-icon" href="aset/apple-touch-icon.png">
+<meta name="theme-color" content="#1a1a1a">
+<meta name="apple-mobile-web-app-status-bar-style" content="#1a1a1a">
+<style>
+@font-face {
+font-family: 'JetBrains Mono';
+src: url('aset/JetBrainsMono-Light.woff2') format('woff2');
+font-weight: normal;
+font-style: normal;
+font-display: swap;
+}
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body {
+background-image: url("https://hazmi.eu.org/aset/background.jpg");
+background-repeat: repeat;
+background-position: center;
+background-size: 300px;
+background-color: #121212;
+color: #e0e0e0;
+font-family: 'JetBrains Mono', monospace, sans-serif;
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+padding: 20px;
+line-height: 1.6;
+}
+.container {
+max-width: 800px;
+width: 100%;
+padding: 40px;
+background-color: #ffffff20;
+border-radius: 12px;
+border: 1px solid #333;
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+text-align: center;
+}
+header {
+margin-bottom: 40px;
+}
+.logo {
+font-size: 2.5rem;
+color: #ffffff;
+margin-bottom: 8px;
+letter-spacing: -1px;
+}
+.quote {
+font-size: 1rem;
+color: #999;
+font-style: italic;
+}
+.social-links {
+margin-bottom: 40px;
+display: flex;
+justify-content: center;
+gap: 20px;
+}
+.social-link {
+display: flex;
+align-items: center;
+gap: 8px;
+color: #00fa9a;
+background-color: #00fa9a0a;
+text-decoration: none;
+font-size: 1.1rem;
+padding: 8px 12px;
+border-radius: 6px;
+transition: background-color 0.3s ease, color 0.3s ease;
+-webkit-tap-highlight-color: transparent;
+}
+.social-link:hover {
+background-color: #00fa9a20;
+color: #5effc8;
+}
+.social-link svg {
+width: 20px;
+height: 20px;
+fill: currentColor;
+}
+.projects-section {
+margin-top: 20px;
+}
+.projects-section h2 {
+font-size: 1.8rem;
+color: #ffffff;
+margin-bottom: 24px;
+border-bottom: 2px solid #00fa9a;
+display: inline-block;
+padding-bottom: 8px;
+}
+.project-list {
+list-style: none;
+padding: 0;
+display: grid;
+grid-template-columns: 1fr;
+gap: 16px;
+}
+@media (min-width: 600px) {
+.project-list {
+grid-template-columns: repeat(2, 1fr);
+}
+}
+.project-item a {
+display: block;
+background-color: #252525;
+color: #00fa9a;
+text-decoration: none;
+padding: 20px;
+border-radius: 8px;
+border: 1px solid #333;
+font-size: 1.1rem;
+transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+-webkit-tap-highlight-color: transparent;
+}
+.project-item a:hover {
+background-color: #333;
+transform: translateY(-5px);
+box-shadow: 0 6px 15px rgba(0, 250, 154, 0.1);
+}
+footer {
+margin-top: 40px;
+font-size: 0.9rem;
+color: #777;
+}
+</style>
+</head>
+<body>
+<main class="container">
+<header>
+<h1 class="logo">HAZMI-101</h1>
+<p class="quote">“Above the sky there is still a sky”</p>
+</header>
+<section class="social-links">
+<a href="https://t.me/hazmi101" class="social-link" target="_blank" rel="noopener noreferrer">
+<svg viewBox="0 0 24 24"><path d="M23.91 3.79L20.3 20.84c-.25 1.21-.98 1.5-2 .94l-5.5-4.07-2.66 2.57c-.3.3-.55.56-1.1.56-.72 0-.6-.27-.84-.95L6.3 13.7l-5.45-1.7c-1.18-.35-1.19-1.16.26-1.75l21.26-8.2c.97-.43 1.9.24 1.53 1.73z"></path></svg>
+<span>Telegram</span>
+</a>
+<a href="https://github.com/hazmi-101" class="social-link" target="_blank" rel="noopener noreferrer">
+<svg viewBox="0 0 16 16"><path d="M7.976 0A7.977 7.977 0 000 7.976c0 3.522 2.3 6.507 5.431 7.584.392.049.538-.196.538-.392v-1.37c-2.201.49-2.69-1.076-2.69-1.076-.343-.93-.881-1.175-.881-1.175-.734-.489.048-.489.048-.489.783.049 1.224.832 1.224.832.734 1.223 1.859.88 2.3.685.048-.538.293-.88.489-1.076-1.762-.196-3.621-.881-3.621-3.964 0-.88.293-1.566.832-2.153-.05-.147-.343-.978.098-2.055 0 0 .685-.196 2.201.832.636-.196 1.322-.245 2.007-.245s1.37.098 2.006.245c1.517-1.027 2.202-.832 2.202-.832.44 1.077.146 1.908.097 2.104a3.16 3.16 0 01.832 2.153c0 3.083-1.86 3.719-3.62 3.915.293.244.538.733.538 1.467v2.202c0 .196.146.44.538.392A7.984 7.984 0 0016 7.976C15.951 3.572 12.38 0 7.976 0z"></path>></svg>
+<span>GitHub</span>
+</a>
+</section>
+<section class="projects-section">
+<h2>My Projects</h2>
+<ul class="project-list">
+<li class="project-item"><a href="https://quran4universe.github.io" target="_blank" rel="noopener noreferrer">quran4universe [WebApp]</a></li>
+<li class="project-item"><a href="https://t.me/TextToolBot" target="_blank" rel="noopener noreferrer">Text Tool [TeleBot]</a></li>
+<li class="project-item"><a href="https://t.me/Hazmi101Bot" target="_blank" rel="noopener noreferrer">Hazmi101 [TeleBot]</a></li>
+<li class="project-item"><a href="https://hazmi-101.github.io/tools/text_tools/" target="_blank" rel="noopener noreferrer">Text Tools [WebApp]</a></li>
+<li class="project-item"><a href="https://hazmi-101.github.io/tools/text_converter/" target="_blank" rel="noopener noreferrer">Text Converter [WebApp]</a></li>
+<li class="project-item"><a href="https://hazmi-101.github.io/tools/cekreferal/" target="_blank" rel="noopener noreferrer">Cek Referal [WebApp]</a></li>
+</ul>
+</section>
+<footer>
+<p>&copy; 2025 Hazmi-101. All rights reserved.</p>
+</footer>
+</main>
+</body>
 </html>
